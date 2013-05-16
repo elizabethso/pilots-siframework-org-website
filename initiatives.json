@@ -1,0 +1,269 @@
+/* We're yet to support multiple locations associated with a single marker */
+{
+    "initiatives": {
+        "lri": {
+            "title": "Lab Results Interface (LRI)",
+            "open": true,
+            "view all title": "View all LRI Pilots (LRI)",
+            "pilots": [
+                {
+                    "title": "Halfpenny, RML",
+                    "description": "Halfpenny Technologies, Inc. (HTI) will utilize its Integration Technology Framework Hub (ITF-Hub), a cloud-based clinical orders and results interoperability platform, to demonstrate the feasibility of converting multiple existing outputs of Laboratory Information Systems (LISs) and create the standard LRI IG format (version 0.6 or above) as a possible input format for ambulatory electronic health record systems (EHRs). ITF-Hub is a .NET-based software platform that utilizes robust internal HL7 transformation engine.",
+                    "pageUrl": "pilots/hti+rml.html",
+                    "participants": [ "HT", "RML" ]
+                }
+            ]
+        },
+        "toc": {
+            "title": "Transitions of Care (ToC)",
+            "open": true,
+            "view all title": "View all ToC Pilots (ToC)",
+            "pilots": [
+                {
+                    "title": "Enable, Techsant, MEDfx",
+                    "description": "This pilot demonstrates the use of Transitions of Care templated CDA to enable referrals. The user story begins when the PCP sends a templated CDA referral request from the Enable Healthcare EMR, through the Techsant HISP solution using Direct Project secure messaging, to the physician connected to the MEDfx HIE solution.",
+                    "pageUrl": "pilots/etm.html",                    
+                    "participants": [ "EH", "MED", "TT" ]
+                },
+                {
+                    "title": "Greenway, MedAllies, NextGen",
+                    "description": "Working with two clinical sites in Upstate NY, one utilizing NextGen and the other utilizing Greenway EHR systems, this pilot will be a demonstration of a closed loop referral; a physician requesting a patient consultation of a specialist and the specialist returning the consultation to the PCP, utilizing the consolidated CDA and Direct protocols across the MedAllies HISP.",
+                    "pageUrl": "pilots/gmn.html",
+                    "participants": [ "MA", "NG", "GMT" ]
+                },
+                {
+                    "title": "SEMHIE, FireStar",
+                    "description": "SEMHIE, its SSA health systems and a physician group aim to achieve interoperability using a combination of leading-edge tools: Model Driven Architecture (MDA) with Object Management Group&apos;s (OMG) standards, Open Health Tools (OHT) open source software, Discharge Summary ToC standards developed by ONC S&amp;I Framework, plus SEMHIE&apos;s NwHIN production CONNECT infrastructure from its SSA e-Disability Claims contract.",
+                    "pageUrl": "pilots/semfire.html",
+                    "participants": [ "SEM", "FSF" ]
+                },
+                {
+                    "title": "Kolusu, Ma&apos;rage",
+                    "description": "By partnering with HITivity organization as a HISP, Dr. Kolusu, a private practitioner, will be able to send the consultation request from the encounter note of the patient within the Allscripts PeakPractice EMR to a specialist capable of consuming the transformed CDA document conformant to the S&amp;I framework ToC document for Clinical Summary.",
+                    "pageUrl": "pilots/kolmar.html",
+                    "participants": [ "M", "K" ]
+                }
+            ]
+        },
+        "pd": {
+            "title": "Provider Directory (PD)",
+            "open": true,
+            "view all title": "View all PD Pilots (PD)",
+            "pilots": [
+                {
+                    "title": "Redwood MedNet, Mendocino Coast, Alliance Medical Center",
+                    "description": "Redwood MedNet will deploy a Direct Project certificate discovery service using DNS and LDAP, as specified by the S&amp;I Provider Directories initiative. Partners in the demonstration are Mendocino Coast District Hospital (CAH), Alliance Medical Center (FQHC). Redwood MedNet will also host certificate discovery for two HISPs in California: San Diego Beacon and EKCITA HIE.",
+                    "pageUrl": "pilots/certdisc1.html",
+                    "participants": [ "RMN", "MCDH", "AMC" ]
+                }
+            ]
+        },
+        "qh": {
+            "title": "Query Health (QH)",
+            "open": true,
+            "view all title": "View all QH Pilots (QH)",
+            "pilots": [
+                {
+                    "title": "Query Health New York",
+                    "description": "The Primary Care Information Project (PCIP) within the New York City Department of Health and Mental Hygiene (NYCDOHMH) and the New York State Department of Health (NYSDOH) will use the Query Health system to investigate and allocate appropriate resources for chronic and acute disease monitoring throughout New York State. The pilot will primarily focus on emerging chronic disease issues with diabetes, hypertension, etc., but may also include traditional reportable disease/syndromic surveillance investigation.  Ultimately the goal will be to incorporate the essential technical and operational elements from the Query Health pilot project into the statewide health information exchange architecture (SHIN-NY). The primary Data Sources are the two primary HIE vendor systems, Axotoxl Discover and Intersystems Healthshare. These repositories will contain the production and/or test data from one or more of the New York City RHIO organizations. A secondary Data Source will be a production eClinicalWorks EHR clinic chosen from amongst PCIP partner sites. The Information Requestor/Query Source role will be played by PCIP and NYS participants.",
+                    "pageUrl": "pilots/qh-ny.html",
+                    "participants": [ "PCIP", "NYSDOH", "LPP-NYC" ]
+                },
+                {
+                    "title": "FDA Mini-Sentinel Query Health Pilot",
+                    "description": "The FDA Mini-Sentinel project is an ongoing distributed network to support public health surveillance of the safety of medical products. The project includes 17 data partners and currently has over 126 million query-able covered lives. The Mini-Sentinel project includes several types of queries, all of which will be included in the pilot: 1) standardized queries of diagnoses, procedures, and drug use stratified by age group, sex, year, and data source (referred to as summary table queries); 2) modular program requests that allow users to input parameter specifications to address common questions such as identification of new users of medical products, background rates, and treatment patterns, and 3) custom coding of complex algorithms to address questions not satisfied in through the prior querying options. In this pilot the existing distributed network will be used to issue several queries to each of the 17 data partners. Additionally, Beth Israel Deaconess Medical Center will be used as a clinical data partner to demonstrate the ability to add new data sources to existing networks more easily.",
+                    "pageUrl": "pilots/qh-mini-sentinel.html",
+                    "participants": [ "MS", "BIDMC", "LPP" ]
+                },
+                {
+                    "title": "MDPHnet Query Health Pilot",
+                    "description": "The Massachusetts eHealth Institute's (MeHI) Massachusetts Department of Public Health Network (MDPHnet) project includes the creation, operation and management of a distributed health data network for public health surveillance. MDPHnet will establish an information asset through which staff from the Massachusetts Department of Public Health (MDPH) and the clinical partners (Massachusetts League of Community Health Centers and Atrius Health) can access population health reports for ILI and diabetes that are timely and useful. MDPHnet targets three query types/capabilities: 1) diabetes surveillance, 2) Influenza-like illness surveillance, and 3) ad-hoc menu-driven querying. The value of the system goes beyond the implementation of these specific queries as the participating clinical institution will have the capability to query their own data for their internal purposes (e.g., quality reporting), the system can be used for other public health reporting requirements, and it will enable integration with other medical practices in the State.",
+                    "pageUrl": "pilots/qh-mdphnet.html",
+                    "participants": [ "MEHI", "MDPH", "MLCHC", "AH", "LPP" ]
+                }
+            ]
+        }
+    },
+    "participantGroups": {
+        "bostonMA": {
+            "x": 680,
+            "y": 92,
+            "title": "Boston, MA"
+        },
+        "newyorkNY": {
+            "x": 652,
+            "y": 130,
+            "title": "New York, NY"
+        },
+        "albanyNY": {
+            "x": 655,
+            "y": 110,
+            "title": "Albany, NY"
+        }
+    },
+    "companies": {
+        "HT": {
+            "x": 622,
+            "y": 143,
+            "title": "Halfpenny Technologies, Inc.",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.halfpenny.com"
+        },
+        "RML": {
+            "x": 380,
+            "y": 245,
+            "title": "RML",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.rmlonline.com"
+        },
+        "EH": {
+            "groupId": "newyorkNY",
+            "title": "Enable Healthcare",
+            "companyUrlScheme": "http",
+            "companyUrl": "ehiconnect.com"
+        },
+        "MED": {
+            "x": 683,
+            "y": 110,
+            "title": "MEDfx",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.medfxcorp.com"
+        },
+        "TT": {
+            "x": 165,
+            "y": 275,
+            "title": "Techsant Technologies",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.techsant.com"
+        },
+        "MA": {
+            "groupId": "albanyNY",
+            "title": "MedAllies",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.medallies.com"
+        },
+        "NG": {
+            "x": 640,
+            "y": 143,
+            "title": "NextGen",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.nextgen.com"
+        },
+        "GMT": {
+            "x": 535,
+            "y": 275,
+            "title": "Greenway Medical Technologies",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.greenwaymedical.com"
+        },
+        "SEM": {
+            "x": 530,
+            "y": 125,
+            "title": "SEMHIE",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.semhie.org"
+        },
+        "FSF": {
+            "groupId": "bostonMA",
+            "title": "FireStar Software",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.firestarsoftware.com"
+        },
+        "M": {
+            "x": 484,
+            "y": 140,
+            "title": "Mar'age",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.marageinc.com"
+        },
+        "K": {
+            "x": 450,
+            "y": 147,
+            "title": "Kolusu",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.kolusumd.com"
+        },
+	    "RMN": {
+	        "x": 40,
+	        "y": 145,
+	        "title": "Redwood MedNet",
+	        "companyUrlScheme": "http",
+	        "companyUrl": "www.redwoodmednet.org"
+	    },
+	    "MCDH": {
+	        "x": 30,
+	        "y": 135,
+	        "title": "Mendocino Coast District Hospital",
+	        "companyUrlScheme": "http",
+	        "companyUrl": "www.mcdh.org"
+	    },
+	    "AMC": {
+	        "x": 40,
+	        "y": 165,
+	        "title": "Alliance Medical Center",
+	        "companyUrlScheme": "http",
+	        "companyUrl": "www.alliancemed.org"
+	    },
+        "PCIP": {
+            "groupId": "newyorkNY",
+            "title": "The Primary Care Information Project (PCIP) within the New York City Department of Health and Mental Hygiene (NYCDOHMH)",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.nyc.gov/pcip"
+        },
+        "NYSDOH": {
+            "groupId": "albanyNY",
+            "title": "New York State Department of Health (NYSDOH)",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.health.ny.gov"
+        },
+        "LPP": {
+            "groupId": "bostonMA",
+            "title": "Lincoln Peak Partners",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.lincolnpeak.com"
+        },
+        "LPP-NYC": {
+            "groupId": "newyorkNY",
+            "title": "Lincoln Peak Partners",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.lincolnpeak.com",
+            "excludeFromCount": true
+        },
+        "MS": {
+            "groupId": "bostonMA",
+            "title": "FDA Mini-Sentinel",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.mini-sentinel.org"
+        },
+        "BIDMC": {
+            "groupId": "bostonMA",
+            "title": "Beth Israel Deaconess Medical Center",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.bidmc.org"
+        },
+        "MEHI": {
+            "groupId": "bostonMA",
+            "title": "Massachusetts eHealth Institute (MeHI)",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.maehi.org"
+        },
+        "MDPH": {
+            "groupId": "bostonMA",
+            "title": "Massachusettes Department of Public Health (MDPH)",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.mass.gov/dph"
+        },
+        "MLCHC": {
+            "groupId": "bostonMA",
+            "title": "Massachusetts League of Community Health Centers",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.massleague.org"
+        },
+        "AH": {
+            "groupId": "bostonMA",
+            "title": "Atrius Health",
+            "companyUrlScheme": "http",
+            "companyUrl": "www.atriushealth.org"
+        }
+    }
+}

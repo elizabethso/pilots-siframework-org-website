@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>S&amp;I Framework Pilots - Participants</title>
+<link rel="stylesheet" type="text/css" href="css/sipilots.css"/>
+<script type="text/javascript" src="scripts/analytics.js"></script>
+<script src="scripts/taffy.js"></script>
+<script>
+		var pilots = TAFFY();
+</script>
+</head>
+
+<body>
+<a name="top"></a>
+<div class="container">
+  <!-- begin .header --><div class="header">
+  	<div class="navglobal">
+      <ul>
+        <li>S&amp;I Framework Links:</li>
+        <li><a href="http://www.siframework.org/" target="_blank">Home</a></li>
+        <li><a href="http://wiki.siframework.org/" target="_blank">Wiki</a></li>
+        <li><a href="http://sibrowser.siframework.org/" target="_blank">Browser</a></li>
+        <li><a href="http://pilots.siframework.org/">Pilots</a></li>
+      </ul>
+    </div>
+    <div class="banner"><a href="./"><img src="images/onc_si_logo_pilots.png" alt="S&amp;I Framework Pilots" id="onc_si_logo_pilots" /></a></div>
+    <div class="nav1">
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="pilots.html">Pilots</a></li>
+        <li><a href="participants.html" class="selected">Participants</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <!--<li><a href="contactus.html">Contact Us</a></li>-->
+      </ul>
+    </div>
+  <!-- end .header --></div>
+
+  <!-- begin .content --><div class="content">
+  	<!-- begin .sblt --><div class="sblt">
+      <div id="accordion">
+        <p class="sidepadding5" style="margin-top:1.5em">Selecting the participants will take you to the participants website.</p>
+        <h3 class="sidepadding5"><a href="#"><img src="images/opener_opened.png" width="12" height="10" class="sidepadding5" />Participants</a></h3>
+        <div>
+        <ul id="selectable" class="nav2">
+        </ul>
+        </div>
+      </div>
+    <!-- end .sblt --></div>
+    <!-- begin .maincontent --><div class="maincontent">
+      <h1>S&amp;I Pilot Participants</h1>
+      <p class="intro">Click on the Participant links on the left to learn more about current S&amp;I Pilot Participants. To participate in S&amp;I pilots, read the sections below. Plan to implement S&amp;I Framework               products in the future? Declare your organization&rsquo;s intent               to employ S&amp;I Framework products by clicking <a href="http://wiki.siframework.org/Pilot+Support+Declaration" target="_new">here</a>. See what organizations have already declared their intentions <a href="http://wiki.siframework.org/Pilot+Support+-+Declared+Organizations" target="_new">here</a>.</p>
+      <h2>
+Criteria for Participating in Pilots</h2>
+      <p class="intro">Each S&amp;I pilot should include multiple care settings tied together by a real-world health information exchange use case. Pilots should attempt to include all the initiative pilot goals, however, the pilot may concentrate on one or more goals that may be applicable. Pilots must include participation and support from clinicians, settings of care and the health information technology vendors (e.g. EHR, LIS, HIE, HISP).</p>
+      <div class="benefits">
+        <h2>Participant Benefits</h2>
+          <div class="benefitsbox">
+            <ul>
+              <li>Ability to leverage initiative resources</li>
+              <li>Ensure higher level of compliance</li>
+              <li>Contribute to the community</li>
+              <li>Be recognized as an early adopter</li>
+            </ul>
+          </div>
+      </div>
+      <h2>How to Get Involved</h2>
+      <p>To participate as a pilot participant:</p>
+      <ol>
+      	<li>Visit the <a href="http://wiki.siframework.org">S&amp;I Framework Wiki</a> to learn more about the several initiative Pilots Workgroups</li>
+      	<li>Register as a committed member on the wiki for the interested initiative</li>
+      	<li>Email the ONC S&amp;I Framework team members (<a href="mailto:admin@siframework.org?subject=Inquiry from the S%26I Pilots Website">admin@siframework.org</a>) to get further guidance</li>
+      	<li>Propose a specific pilot, describing stakeholders, provider types, goals and measurable pilot objectives that provide feedback</li>
+      	<li>Commit adequate resources to successfully complete the proposed scope</li>
+      </ol>
+    <!-- end .maincontent --></div>
+  <!-- end .content --></div>
+
+<script type="text/javascript">
+					//         
+					var cm_map;
+					var cm_mapMarkers = [];
+					var cm_mapHTMLS = [];
+
+					
+
+					// Change these parameters to customize map
+					var param_wsId = "od6";
+					var param_ssKey = "0ApW4Ox66ml2IdFYteUQ3ZEZmTXJ0UWR4QlBmb1pfV1E";
+					var param_useSidebar = true;
+					//map column name
+					var param_idColumn = "pilotid";
+					var param_titleColumn = "title";
+					var param_descriptionColumn = "description";
+					var param_initiativesColumn = "initiatives";
+					var param_pilotColumn = "pilot";
+					var param_addressColumn = "address";
+					var param_stateColumn = "state";
+					var param_companyUrlColumn = "companyurl";
+					var param_pageUrlColumn = "pageurl";
+
+					var param_dishColumn = "bestdish";
+					var param_latColumn = "latitude";
+					var param_lngColumn = "longitude";
+					
+					var param_rankColumn = "rank";
+					
+					var param_iconType = "green";
+					var param_iconOverType = "orange";
+
+					/**
+					 * Loads map and calls function to load in worksheet data.
+					 */
+					function cm_load() {
+						
+							cm_getJSON();
+						
+					}
+
+					
+
+					/**
+					 * Function that sorts 2 worksheet rows from JSON feed
+					 * based on their rank column. Only called if column is defined.
+					 * @param {rowA} Object Represents row in JSON feed
+					 * @param {rowB} Object Represents row in JSON feed
+					 * @return {Number} Difference between row values
+					 */
+					function cm_sortRows(rowA, rowB) {
+						var rowAValue = parseFloat(rowA["gsx$"
+								+ param_rankColumn].$t);
+						var rowBValue = parseFloat(rowB["gsx$"
+								+ param_rankColumn].$t);
+
+						return rowAValue - rowBValue;
+					}
+
+					/** 
+					 * Called when JSON is loaded. Creates sidebar if param_sideBar is true.
+					 * Sorts rows if param_rankColumn is valid column. Iterates through worksheet rows, 
+					 * creating marker and sidebar entries for each row.
+					 * @param {JSON} json Worksheet feed
+					 */
+					function cm_loadMapJSON(json) {
+						var usingRank = false;
+
+						var sidebarDIV=document.getElementById("cm_sidebarDIV");
+
+
+						if (json.feed.entry[0]["gsx$" + param_rankColumn]) {
+							usingRank = true;
+							json.feed.entry.sort(cm_sortRows);
+						}
+
+						for ( var i = 0; i < json.feed.entry.length; i++) {
+							var entry = json.feed.entry[i];
+							if (entry["gsx$" + param_latColumn]) {
+								var lat = parseFloat(entry["gsx$"
+										+ param_latColumn].$t);
+								var lng = parseFloat(entry["gsx$"
+										+ param_lngColumn].$t);
+								var idVal=null;
+								var titleVal=null;
+								var descriptionVal=null;
+								var initiativesVal=null;
+								var pilotVal=null;
+								var addressVal=null;
+								var stateVal=null;
+								var companyUrlVal=null;
+								var pageUrlVal=null;
+								
+								if (entry["gsx$" + param_idColumn]) {
+									idVal=entry["gsx$" + param_idColumn].$t;
+								}
+								if (entry["gsx$" + param_titleColumn]) {
+									titleVal=entry["gsx$" + param_titleColumn].$t;
+									
+								}
+								if (entry["gsx$" + param_initiativesColumn]) {
+									initiativesVal=entry["gsx$" + param_initiativesColumn].$t;
+							
+								}
+								if (entry["gsx$" + param_pilotColumn]) {
+									pilotVal=entry["gsx$" + param_pilotColumn].$t;
+									
+								}
+								if (entry["gsx$" + param_addressColumn]) {
+									addressVal=entry["gsx$" + param_addressColumn].$t;
+									
+								}
+								if (entry["gsx$" + param_stateColumn]) {
+									stateVal=entry["gsx$" + param_stateColumn].$t;
+					
+								}
+								if (entry["gsx$" + param_companyUrlColumn]) {
+									companyUrlVal=entry["gsx$" + param_companyUrlColumn].$t;
+									
+								}
+								if (entry["gsx$" + param_pageUrlColumn]) {
+									pageUrlVal=entry["gsx$" + param_pageUrlColumn].$t;
+								
+								}
+								if (entry["gsx$" + param_descriptionColumn]) {
+									descriptionVal=entry["gsx$"+param_descriptionColumn].$t;
+									
+								}
+								
+								//insert to db
+								pilots.insert({pilotid:idVal,title:titleVal,initiatives:initiativesVal,pilot:pilotVal,address:addressVal,state:stateVal,latitude:lat,longitude:lng,companyurl:companyUrlVal,pageurl:pageUrlVal,description:descriptionVal});
+							}
+						}//end for loop insert records
+
+						
+						//counts
+						
+						var company=pilots().order("title").distinct("title","companyurl");
+						var list=(document.getElementById("selectable"));
+						for( c=0;c<company.length;c++){
+							
+							var li = document.createElement("li");
+							li.class="ui-widget-content";
+							var anchor = document.createElement("a");
+							anchor.target="_blank";
+							anchor.href="http://"+company[c][1];
+							anchor.innerText=company[c][0];
+							li.appendChild(anchor);
+							list.appendChild(li);
+						}
+					
+					}
+
+
+					/**
+					 * Creates a script tag in the page that loads in the 
+					 * JSON feed for the specified key/ID. 
+					 * Once loaded, it calls cm_loadMapJSON.
+					 */
+					function cm_getJSON() {
+
+						// Retrieve the JSON feed.
+						var script = document.createElement('script');
+
+						script
+								.setAttribute(
+										'src',
+										'http://spreadsheets.google.com/feeds/list'
+												+ '/'
+												+ param_ssKey
+												+ '/'
+												+ param_wsId
+												+ '/public/values'
+												+ '?alt=json-in-script&callback=cm_loadMapJSON');
+						script.setAttribute('id', 'jsonScript');
+						script.setAttribute('type', 'text/javascript');
+						document.documentElement.firstChild.appendChild(script);
+					}
+
+					setTimeout('cm_load()', 500);
+
+					//
+				</script>
+  <!-- begin .footer --><div class="footer">
+    <div class="navglobal"><ul><li>Contact Us: <a href="mailto:admin@siframework.org?subject=Inquiry from the S%26I Pilots Website">admin@siframework.org</a></li></ul></div>
+  <!-- end .footer --></div>
+
+<!-- end .container --></div>
+</body>
+</html>
+
+

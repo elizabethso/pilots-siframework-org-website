@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>S&amp;I Framework Pilots</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/sipilots.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!--  
+<link rel="stylesheet" type="text/css"
+	href="http://ajax.googleapis.com/ajax/libs/dojo/1.6.0/dojo/resources/dojo.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://ajax.googleapis.com/ajax/libs/dojo/1.6.0/dijit/themes/soria/soria.css" />
+-->
+<!--  
+<script type="text/javascript" src="scripts/analytics.js"></script>
+<script type="text/javascript">
+	var djConfig = {
+		baseUrl : "./",
+		parseOnLoad : true,
+		modulePaths : {
+			"widgets" : "widgets",
+			"templates" : "widgets/templates"
+		}
+	};
+</script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/dojo/1.6.0/dojo/dojo.xd.js"
+	djConfig="parseOnLoad:true"></script>
+<script type="text/javascript">
+	dojo.require("widgets.ResetSelectors");
+	dojo.require("widgets.MapMarker");
+	dojo.require("widgets.MapCounts");
+	dojo.require("widgets.PopupContent");
+	dojo.require("widgets.MultiPopupContent");
+	dojo.require("widgets.ExtraPilot");
+	dojo.require("dojo.behavior");
+	dojo.require("dijit.form.CheckBox");
+	dojo.require("dijit.TitlePane");
+	var moveMarkers = false;
+	if (document.location.href.indexOf("moveMarkers") > document.location.href
+			.indexOf("?")) {
+		dojo.require("dojo.dnd.Moveable");
+		dojo.require("dijit.form.Button");
+		moveMarkers = true;
+	}
+</script>
+-->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"
+	type="text/javascript"></script>
+<script src="scripts/taffy.js"></script>
+<script>
+	var pilots = TAFFY();
+</script>
+</head>
+<body class="soria">
+	<div class="container">
+		<!-- begin .header -->
+		<div class="header">
+			<div class="navglobal">
+				<ul>
+					<li>S&amp;I Framework Links:</li>
+					<li><a href="http://www.siframework.org/" target="_blank">Home</a></li>
+					<li><a href="http://wiki.siframework.org/" target="_blank">Wiki</a></li>
+					<li><a href="http://sibrowser.siframework.org/"
+						target="_blank">Browser</a></li>
+					<li><a href="http://pilots.siframework.org/">Pilots</a></li>
+				</ul>
+			</div>
+			<div class="banner">
+				<a href="./"><img src="images/onc_si_logo_pilots.png"
+					alt="S&amp;I Framework Pilots" id="onc_si_logo_pilots" /></a>
+			</div>
+			<div class="nav1">
+				<ul>
+					<li><a href="./" class="selected">Home</a></li>
+					<li><a href="pilots.html">Pilots</a></li>
+					<li><a href="participants.html">Participants</a></li>
+					<li><a href="faq.html">FAQ</a></li>
+					<!--<li><a href="contactus.html">Contact Us</a></li>-->
+				</ul>
+			</div>
+			<!-- end .header -->
+		</div>
+
+		<!-- begin .content -->
+		<div class="content">
+
+			<!-- begin .maincontent -->
+			<div id="feedback" class="maincontentMap">
+				<div id="dropdown">
+					
+
+					<form action="filter">
+						<select id="states" name="state" onchange="refresh('states');">
+							<option value="">All States</option>
+						</select> <select id="initiatives" name="initiatives"
+							onchange="refresh('initiatives');"><option value="">Initiatives</option></select>
+						<select class="pilots" id="pilots" name="pilots" onchange="refresh('pilots');"><option
+								value="">Pilot Participants</option></select>
+					</form>
+				</div>
+				<br class="clearfloat" />
+				<!-- <div class="map"><img id="map_sipilots" src="images/map.png" alt="Map of S&amp;I Pilots" border="0" usemap="#imagemap_sipilots" /></div>-->
+				<!-- ++Begin GSpreadsheets Map Wizard Generated Code++ -->
+
+				<div
+					style="width: 100%; font-family: Arial, sans-serif; font-size: 11px; border: 1px solid black">
+					<table id="cm_mapTABLE">
+						<tbody>
+							<tr id="cm_mapTR">
+								<td width="150" valign="top">
+									<div id="cm_sidebarDIV"
+										style="overflow: auto; height: 450px; font-size: 11px; color: rgb(0, 0, 0);margin-left:3px;">
+
+									</div>
+								</td>
+								<td id="cm_map_td">
+									<div id="cm_map" style="width: 100%; height: 450px"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+				<script type="text/javascript">
+					//         
+					var cm_map;
+					var cm_mapMarkers = [];
+					var cm_mapHTMLS = [];
+					var infoWindow = new google.maps.InfoWindow({
+						content: "",
+						maxWidth: 300
+					});
+
+					// Change these parameters to customize map
+					var param_wsId = "od6";
+					var param_ssKey = "0ApW4Ox66ml2IdFYteUQ3ZEZmTXJ0UWR4QlBmb1pfV1E";
+					var param_useSidebar = true;
+					var activeColor="FD766A";
+					var inactiveColor="497DE3";
+					//map column name
+					var param_colorColumn = "color";
+					var param_titleColumn = "title";
+					var param_descriptionColumn = "description";
+					var param_initiativesColumn = "initiatives";
+					var param_pilotColumn = "pilot";
+					var param_addressColumn = "address";
+					var param_stateColumn = "state";
+					var param_companyUrlColumn = "companyurl";
+					var param_pageUrlColumn = "pageurl";
+
+					var param_dishColumn = "bestdish";
+					var param_latColumn = "latitude";
+					var param_lngColumn = "longitude";
+
+					var param_rankColumn = "rank";
+
+					var param_iconType = "green";
+					var param_iconOverType = "orange";
+
+					/**
+					 * Loads map and calls function to load in worksheet data.
+					 */
+					function cm_load() {
+						var center = new google.maps.LatLng(39.427707,-101.959442);
+
+						var mapOptions = {
+							zoom : 12,
+							center : center,
+							disableDefaultUI: false,
+							streetViewControl: false,
+							overviewMapControl: false,
+							mapTypeControl: false,
+							mapTypeId : google.maps.MapTypeId.ROADMAP
+						}
+
+						// create the map
+						cm_map = new google.maps.Map(document
+								.getElementById('cm_map'), mapOptions);
+
+						// Create the DIV to hold the control and
+						// call the HomeControl() constructor passing
+						// in this DIV.
+						var homeControlDiv = document.createElement('div');
+						
+						var homeControl = new HomeControl(homeControlDiv, cm_map, center);
+						homeControlDiv.index = 1;
+						cm_map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+
+						//load spreadsheet
+						cm_getJSON();
+
+					}
+
+					function HomeControl(controlDiv, map, home) {
+
+						// We set up a variable for this since we're adding
+						// event listeners later.
+						var control = this;
+
+						// Set the home property upon construction
+						control.home_ = home;
+
+						// Set CSS styles for the DIV containing the control
+						// Setting padding to 5 px will offset the control
+						// from the edge of the map
+						controlDiv.style.padding = '5px';
+
+						// Set CSS for the control interior
+						var totalCount = document.createElement('div');
+						totalCount.id="widgets_MapCounts_0";
+						totalCount.style.height="5px";
+						totalCount.setAttribute("widgetid","widgets_MapCounts_0");
+						//participants
+						var parth1=document.createElement('h1');
+						parth1.className="mapcounts fltrt";
+						var partspan=document.createElement('span');
+						partspan.className="alpha";
+						partspan.innerText="Participants";
+						var partspannumeric=document.createElement('span');
+						partspannumeric.className="numeric";
+						partspannumeric.id="partCount";
+						parth1.appendChild(partspan);
+						parth1.appendChild(partspannumeric);
+						//pilots
+						var pilotH1=document.createElement('h1');
+						pilotH1.className="mapcounts fltrt";
+						var pilotspan=document.createElement('span');
+						pilotspan.className="alpha";
+						pilotspan.innerText="Pilots";
+						var pilotspannumeric=document.createElement('span');
+						pilotspannumeric.className="numeric";
+						pilotspannumeric.id="pilotsCount";
+						pilotH1.appendChild(pilotspan);
+						pilotH1.appendChild(pilotspannumeric);
+						//initiatives
+						var initH1=document.createElement('h1');
+						initH1.className="mapcounts fltrt";
+						var initspan=document.createElement('span');
+						initspan.className="alpha";
+						initspan.innerText="Initiatives";
+						var initspannumeric=document.createElement('span');
+						initspannumeric.className="numeric";
+						initspannumeric.id="initCount";
+						initH1.appendChild(initspan);
+						initH1.appendChild(initspannumeric);
+						
+						totalCount.appendChild(parth1);
+						totalCount.appendChild(pilotH1);
+						totalCount.appendChild(initH1);
+				
+						controlDiv.appendChild(totalCount);
+						
+						//add legend for act/inactive participants
+						var legendDiv = document.createElement('div');
+						legendDiv.style.border="1px solid black";
+						legendDiv.style.padding="5px";
+						var activeimg=document.createElement('img');
+						activeimg.src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld="
+							+ ""
+							+ "|"
+							+ activeColor
+							+ "|000000";
+						activeimg.title="Active Participant";
+						var activespan=document.createElement('span');
+						activespan.className="alpha";
+						activespan.innerHTML="Active";
+						activespan.insertBefore(activeimg,activespan.firstChild);
+						
+						var inactiveimg=document.createElement('img');
+						inactiveimg.src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld="
+							+ ""
+							+ "|"
+							+ inactiveColor
+							+ "|000000";
+						inactiveimg.title="Inactive Participant";
+						var inactivespan=document.createElement('span');
+						inactivespan.className="alpha";
+						inactivespan.innerHTML="Inactive ";
+						inactivespan.insertBefore(inactiveimg,inactivespan.firstChild);
+						
+						legendDiv.appendChild(activespan);
+						legendDiv.appendChild(inactivespan);
+						
+						cm_map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);
+
+					}
+
+					/**
+					 * Function called when marker on the map is clicked.
+					 * Opens an info window (bubble) above the marker.
+					 * @param {Number} markerNum Number of marker in global array
+					 */
+					function cm_markerClicked(markerNum) {
+						infoWindow.setContent(cm_mapHTMLS[markerNum]);
+						infoWindow.open(cm_map,cm_mapMarkers[markerNum]);
+
+					}
+
+					/**
+					 * Function that sorts 2 worksheet rows from JSON feed
+					 * based on their rank column. Only called if column is defined.
+					 * @param {rowA} Object Represents row in JSON feed
+					 * @param {rowB} Object Represents row in JSON feed
+					 * @return {Number} Difference between row values
+					 */
+					function cm_sortRows(rowA, rowB) {
+						var rowAValue = parseFloat(rowA["gsx$"
+								+ param_rankColumn].$t);
+						var rowBValue = parseFloat(rowB["gsx$"
+								+ param_rankColumn].$t);
+
+						return rowAValue - rowBValue;
+					}
+
+					/** 
+					 * Called when JSON is loaded. Creates sidebar if param_sideBar is true.
+					 * Sorts rows if param_rankColumn is valid column. Iterates through worksheet rows, 
+					 * creating marker and sidebar entries for each row.
+					 * @param {JSON} json Worksheet feed
+					 */
+					function cm_loadMapJSON(json) {
+						var usingRank = false;
+
+						var sidebarDIV = document
+								.getElementById("cm_sidebarDIV");
+
+						if (json.feed.entry[0]["gsx$" + param_rankColumn]) {
+							usingRank = true;
+							json.feed.entry.sort(cm_sortRows);
+						}
+
+						for ( var i = 0; i < json.feed.entry.length; i++) {
+							var entry = json.feed.entry[i];
+							if (entry["gsx$" + param_latColumn]) {
+								var lat = parseFloat(entry["gsx$"
+										+ param_latColumn].$t);
+								var lng = parseFloat(entry["gsx$"
+										+ param_lngColumn].$t);
+								var colorVal = null;
+								var titleVal = null;
+								var descriptionVal = null;
+								var initiativesVal = null;
+								var pilotVal = null;
+								var addressVal = null;
+								var stateVal = null;
+								var companyUrlVal = null;
+								var pageUrlVal = null;
+
+								if (entry["gsx$" + param_colorColumn]) {
+									colorVal = entry["gsx$" + param_colorColumn].$t;
+								}
+								if (entry["gsx$" + param_titleColumn]) {
+									titleVal = entry["gsx$" + param_titleColumn].$t;
+
+								}
+								if (entry["gsx$" + param_initiativesColumn]) {
+									initiativesVal = entry["gsx$"
+											+ param_initiativesColumn].$t;
+
+								}
+								if (entry["gsx$" + param_pilotColumn]) {
+									pilotVal = entry["gsx$" + param_pilotColumn].$t;
+
+								}
+								if (entry["gsx$" + param_addressColumn]) {
+									addressVal = entry["gsx$"
+											+ param_addressColumn].$t;
+
+								}
+								if (entry["gsx$" + param_stateColumn]) {
+									stateVal = entry["gsx$" + param_stateColumn].$t;
+
+								}
+								if (entry["gsx$" + param_companyUrlColumn]) {
+									companyUrlVal = entry["gsx$"
+											+ param_companyUrlColumn].$t;
+
+								}
+								if (entry["gsx$" + param_pageUrlColumn]) {
+									pageUrlVal = entry["gsx$"
+											+ param_pageUrlColumn].$t;
+
+								}
+								if (entry["gsx$" + param_descriptionColumn]) {
+									descriptionVal = entry["gsx$"
+											+ param_descriptionColumn].$t;
+
+								}
+
+								//insert to db
+								pilots.insert({
+									title : titleVal,
+									initiatives : initiativesVal,
+									pilot : pilotVal,
+									address : addressVal,
+									state : stateVal,
+									color : colorVal,
+									latitude : lat,
+									longitude : lng,
+									companyurl : companyUrlVal,
+									pageurl : pageUrlVal,
+									description : descriptionVal
+								});
+							}
+						}//end for loop insert records
+
+						//populate dropdown
+						populateSelect("state", "states");
+						populateSelect("initiatives", "initiatives");
+						populateSelect("title", "pilots");
+						//counts
+						var initCount = (document.getElementById("initCount"));
+						initCount.innerText = pilots().distinct("initiatives").length;
+						var pilotsCount = (document
+								.getElementById("pilotsCount"));
+						pilotsCount.innerText = pilots().distinct("pilot").length;
+						var partCount = (document.getElementById("partCount"));
+						partCount.innerText = pilots().distinct("title").length;
+						//load markers for default
+						refresh(null);
+					}
+					/**
+					 *populate dropdown select
+					 */
+					function populateSelect(columnName, selectId) {
+						var data = pilots().distinct(columnName).sort();
+						var selectObj = document.getElementById(selectId);
+						for ( var i = 0; i < data.length; i++) {
+							var opt = document.createElement("option");
+
+							// Add an Option object to Drop Down/List Box
+							selectObj.options.add(opt);
+							// Assign text and value to Option object
+							opt.text = data[i];
+							opt.value = data[i];
+						}
+					}
+
+					function refresh(filterName) {
+						//reset map vars
+						for ( var i = 0; i < cm_mapMarkers.length; i++) {
+							cm_mapMarkers[i].setMap(null);
+						}
+						cm_mapMarkers = [];
+						cm_mapHTMLS = [];
+
+						var selectedState = document.getElementById("states");
+						var selectedInit = document
+								.getElementById("initiatives");
+						var selectedPilot = document.getElementById("pilots");
+						var filters = {};
+
+						if (filterName == "states") {
+							if ("" != selectedState.options[selectedState.selectedIndex].value)
+								filters['state'] = selectedState.options[selectedState.selectedIndex].value;
+							selectedPilot.selectedIndex = 0;
+							selectedInit.selectedIndex = 0;
+
+						} else if (filterName == "initiatives") {
+							selectedState.selectedIndex = 0;
+							selectedPilot.selectedIndex = 0;
+							if ("" != selectedInit.options[selectedInit.selectedIndex].value)
+								filters['initiatives'] = selectedInit.options[selectedInit.selectedIndex].value;
+						} else if (filterName == "pilots") {
+							selectedState.selectedIndex = 0;
+							if ("" != selectedPilot.options[selectedPilot.selectedIndex].value)
+								filters['title'] = selectedPilot.options[selectedPilot.selectedIndex].value;
+							selectedInit.selectedIndex = 0;
+						}
+
+						var sql = null;
+						// setTimeout('cm_load()', 500);
+
+						cm_loadMap(pilots(filters).order("title").distinct(
+								[ "title" ]));
+
+					}
+
+					function cm_loadMap(json) {
+						var usingRank = false;
+						var counter = 1;
+						var sidebarDIV = document
+								.getElementById("cm_sidebarDIV");
+						//clear all previous marker list
+						if (sidebarDIV.hasChildNodes()) {
+							while (sidebarDIV.childNodes.length >= 1) {
+								sidebarDIV.removeChild(sidebarDIV.firstChild);
+							}
+						}
+
+						var bounds = new google.maps.LatLngBounds();
+						
+						if (json.length == 0)
+							alert("No result found!");
+
+						for (size = 0; size < json.length; size++) {
+							var lat = null;
+							var lng = null;
+
+							var colorVal = null;
+							var titleVal = null;
+							var descriptionVal = null;
+							var initiativesVal = null;
+							var pilotVal = null;
+							var addressVal = null;
+							var stateVal = null;
+							var companyUrlVal = null;
+							var pageUrlVal = null;
+
+							
+							//var html = "<div style='position: absolute; display: block; left: 766.5px; top: 200px; width: 300px; height: 240px; background-image: url(http://pilots.siframework.org/images/balloon-1.png); background-color: transparent; background-position: 0% 0%; background-repeat: no-repeat no-repeat;'>";
+							var html = "<div style='font-size:12px;height:200px;width:245px;display: block;'>";
+
+							var uniqueTitle = pilots({
+								title : json[size]
+							});
+							if (uniqueTitle.count() > 1) {
+								var unique = uniqueTitle.get(0);
+
+								if (unique[0][param_titleColumn]) {
+									titleVal = unique[0][param_titleColumn];
+									html += "<strong>" + titleVal + "</strong>";
+
+								}
+								html += "<div style='width: 230px; height: 151px; position: absolute; left: 0px; font-family: verdana; font-size: 11px; font-weight: normal; color: black;'>";
+								html += "<div id='widgets_PopupContent_11' widgetid='widgets_PopupContent_11'><div class='header'></div><div class='content'><div class='participantinfo'>";
+
+								if (unique[0][param_companyUrlColumn]) {
+									companyUrlVal = unique[0][param_companyUrlColumn];
+									html += "<b>Company URL: </b>"
+											+ "<a href='http://"+companyUrlVal+"' target='_blank'>"
+											+ companyUrlVal + "</a>";
+								}
+								if (unique[0][param_addressColumn]) {
+									addressVal = unique[0][param_addressColumn];
+									html += "<br/><br/><b>Address: </b>"
+											+ addressVal;
+								}
+
+								uniqueTitle
+										.each(function(record, recordnumber) {
+
+											if (record[param_latColumn]) {
+
+												lat = parseFloat(record[param_latColumn]);
+												lng = parseFloat(record[param_lngColumn]);
+												//var html = "<div style='position: absolute; display: block; left: 766.5px; top: 200px; width: 300px; height: 240px; background-image: url(http://pilots.siframework.org/images/balloon-1.png); background-color: transparent; background-position: 0% 0%; background-repeat: no-repeat no-repeat;'>";
+
+												//html +="<div style='position: absolute; top: 35px; left: 35px; width: 230px; height: 170px;'>";
+
+
+												if (record[param_initiativesColumn]) {
+													initiativesVal = record[param_initiativesColumn];
+													html += "<br/><br/><b>Initiative: </b>"
+															+ initiativesVal;
+												}
+												if (record[param_pilotColumn]) {
+													pilotVal = record[param_pilotColumn];
+													html += "<br/><br/><b>Pilot Label: </b>"
+															+ pilotVal;
+												}
+
+												if (record[param_stateColumn]) {
+													stateVal = record[param_stateColumn];
+
+												}
+												if (record[param_colorColumn]) {
+													colorVal = record[param_colorColumn];
+												}
+
+												if (record[param_descriptionColumn]) {
+													descriptionVal = record[param_descriptionColumn];
+													html += "<br/><br/><b>Pilot Description: </b>"
+															+ descriptionVal;
+												}
+
+												html += "<br/><a href=\"pilots.html#"+encodeURIComponent(pilotVal)+"\">[more]</a>";
+												html += "<hr/>";
+
+											}
+
+										});//end for each loop to append participants with multiple pilots
+								html += "</div></div></div></div></div>";
+							} else {
+								uniqueTitle
+										.each(function(record, recordnumber) {
+
+											if (record[param_latColumn]) {
+
+												lat = parseFloat(record[param_latColumn]);
+												lng = parseFloat(record[param_lngColumn]);
+												//var html = "<div style='position: absolute; display: block; left: 766.5px; top: 200px; width: 300px; height: 240px; background-image: url(http://pilots.siframework.org/images/balloon-1.png); background-color: transparent; background-position: 0% 0%; background-repeat: no-repeat no-repeat;'>";
+
+												//html +="<div style='position: absolute; top: 35px; left: 35px; width: 230px; height: 170px;'>";
+
+												if (record[param_titleColumn]) {
+													titleVal = record[param_titleColumn];
+													html += "<strong>"
+															+ titleVal
+															+ "</strong>";
+
+												}
+												html += "<div style='width: 230px; height: 151px; position: absolute; left: 0px; font-family: verdana; font-size: 11px; font-weight: normal; color: black;'>";
+												html += "<div id='widgets_PopupContent_11' widgetid='widgets_PopupContent_11'><div class='header'></div><div class='content'><div class='participantinfo'>";
+
+												if (record[param_companyUrlColumn]) {
+													companyUrlVal = record[param_companyUrlColumn];
+													html += "<b>Company URL: </b>"
+															+ "<a href='http://"+companyUrlVal+"' target='_blank'>"
+															+ companyUrlVal
+															+ "</a>";
+												}
+
+												if (record[param_initiativesColumn]) {
+													initiativesVal = record[param_initiativesColumn];
+													html += "<br/><br/><b>Initiative: </b>"
+															+ initiativesVal;
+												}
+												if (record[param_pilotColumn]) {
+													pilotVal = record[param_pilotColumn];
+													html += "<br/><br/><b>Pilot Label: </b>"
+															+ pilotVal;
+												}
+												if (record[param_addressColumn]) {
+													addressVal = record[param_addressColumn];
+													html += "<br/><br/><b>Address: </b>"
+															+ addressVal;
+												}
+												if (record[param_stateColumn]) {
+													stateVal = record[param_stateColumn];
+
+												}
+												if (record[param_colorColumn]) {
+													colorVal = record[param_colorColumn];
+												}
+
+												if (record[param_descriptionColumn]) {
+													descriptionVal = record[param_descriptionColumn];
+													html += "<br/><br/><b>Pilot Description: </b>"
+															+ descriptionVal;
+												}
+												//link to pilot details page
+												html += "<br/><a href=\"pilots.html#"+encodeURIComponent(pilotVal)+"\">[more]</a>";
+
+												html += "</div></div></div></div></div>";
+											}
+
+										});//end for each loop info window
+							}
+							var markerLabel = counter++;
+							var point = new google.maps.LatLng(lat, lng);
+							if(size==0)
+								cm_map.setCenter(point);
+							// create the marker
+							var marker = cm_createMarker(point, titleVal, html,
+									markerLabel, colorVal);
+
+							//cm_map.addOverlay(marker);
+							cm_mapMarkers.push(marker);
+							cm_mapHTMLS.push(html);
+							bounds.extend(point);
+
+							if (param_useSidebar == true) {
+								var markerA = document.createElement("a");
+								markerA.setAttribute("href",
+										"javascript:cm_markerClicked('"
+												+ size + "')");
+								markerA.style.color = "#000000";
+								var sidebarText = "";
+
+								sidebarText += markerLabel + ") ";
+
+								sidebarText += titleVal;
+								markerA.appendChild(document
+										.createTextNode(sidebarText));
+								sidebarDIV.appendChild(markerA);
+								sidebarDIV.appendChild(document
+										.createElement("br"));
+								sidebarDIV.appendChild(document
+										.createElement("br"));
+							}
+						}//end for loop where size>0
+
+						//readjust zoom level if bounding box is too zoomed in
+						var zoom = cm_map.fitBounds(bounds);
+						
+						
+						cm_map.fitBounds(bounds);
+						if (cm_mapMarkers.length < 2) {
+							cm_map.setZoom(8);
+						}
+						cm_map.setCenter(bounds.getCenter());
+					}
+
+					/**
+					 * Creates marker with ranked Icon or blank icon,
+					 * depending if rank is defined. Assigns onclick function.
+					 * @param {GLatLng} point Point to create marker at
+					 * @param {String} title Tooltip title to display for marker
+					 * @param {String} html HTML to display in InfoWindow
+					 * @param {Number} rank Number rank of marker, used in creating icon
+					 * @return {GMarker} Marker created
+					 */
+					function cm_createMarker(point, title, html, markerLabel,
+							colorVal) {
+						colorVal = "FF0000";
+						var markerOpts = {};
+						//http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000 
+						//var newIcon = MapIconMaker.createLabeledMarkerIcon({label: markerLabel, primaryColor: colorVal});
+
+						markerOpts.icon = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000";
+						markerOpts.title = title;
+						markerOpts.map = cm_map;
+						markerOpts.position = point;
+						
+						var colorCount=pilots({"title":title,"color":"Active"}).count();
+						if(colorCount>0){
+							colorVal=activeColor;
+						}else{
+							colorVal=inactiveColor;
+						}
+						var marker = new google.maps.Marker(
+								{
+									position : point,
+									map : cm_map,
+									icon : "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld="
+											+ markerLabel
+											+ "|"
+											+ colorVal
+											+ "|000000"
+								});
+
+						google.maps.event.addListener(marker, "click",
+								function() {
+									infoWindow.setContent(html);
+									infoWindow.open(marker.get('map'), marker);
+								});
+						/*GEvent.addListener(marker, "mouseover", function() {
+							marker.setImage(marker.getIcon().imageOver);
+						});
+						GEvent.addListener(marker, "mouseout", function() {
+							marker.setImage(marker.getIcon().imageOut);
+						});
+						
+						GEvent
+								.addListener(
+										marker,
+										"infowindowopen",
+										function() {
+											marker
+													.setImage(marker.getIcon().imageOver);
+										});
+						GEvent.addListener(marker, "infowindowclose",
+								function() {
+									marker.setImage(marker.getIcon().imageOut);
+								});
+						 */
+						return marker;
+					}
+
+					/**
+					 * Creates a script tag in the page that loads in the 
+					 * JSON feed for the specified key/ID. 
+					 * Once loaded, it calls cm_loadMapJSON.
+					 */
+					function cm_getJSON() {
+
+						// Retrieve the JSON feed.
+						var script = document.createElement('script');
+
+						script
+								.setAttribute(
+										'src',
+										'http://spreadsheets.google.com/feeds/list'
+												+ '/'
+												+ param_ssKey
+												+ '/'
+												+ param_wsId
+												+ '/public/values'
+												+ '?alt=json-in-script&callback=cm_loadMapJSON');
+						script.setAttribute('id', 'jsonScript');
+						script.setAttribute('type', 'text/javascript');
+						document.documentElement.firstChild.appendChild(script);
+					}
+
+					setTimeout('cm_load()', 500);
+
+					//
+				</script>
+
+				<!-- end .maincontent -->
+			</div>
+			<!-- end .content -->
+		</div>
+
+		<!-- begin .footer -->
+		<div class="footer">
+			<div class="navglobal">
+				<ul>
+					<li>Contact Us: <a
+						href="mailto:admin@siframework.org?subject=Inquiry from the S%26I Pilots Website">admin@siframework.org</a></li>
+				</ul>
+			</div>
+			<!-- end .footer -->
+		</div>
+
+		<!-- end .container -->
+	</div>
+	<!--  
+	<script type="text/javascript" src="scripts/prototype.js"></script>
+	<script type="text/javascript" src="scripts/HelpBalloon.js"></script>
+	<script type="text/javascript" src="scripts/sipilots.js"></script>
+	-->
+</body>
+</html>
+

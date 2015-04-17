@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>S&amp;I Framework Pilots</title>
@@ -23,7 +23,7 @@
 					<li>S&amp;I Framework Links:</li>
 					<li><a href="http://www.siframework.org/" target="_blank">Home</a></li>
 					<li><a href="http://wiki.siframework.org/" target="_blank">Wiki</a></li>
-					<li><a href="http://sibrowser.siframework.org/"
+					<li><a href="http://confluence.siframework.org/x/UIBfAg"
 						target="_blank">Browser</a></li>
 					<li><a href="http://pilots.siframework.org/">Pilots</a></li>
 				</ul>
@@ -317,7 +317,6 @@
 					img.height = "10";
 					img.class = "sidepadding5";
 					//h3.insertBefore(img,h3.firstChild);
-					h3.appendChild(img);
 					var initAnchor = document.createElement("a");
 					//onclick load the initiative description into view
 					initAnchor.onclick = function() {
@@ -335,6 +334,8 @@
 					initAnchor.href = "#"
 							.concat(encodeURIComponent(initrecord[param_initiativesnameColumn]));
 					initAnchor.innerText = initrecord[param_initiativesnameColumn];
+					img.alt = initAnchor.innerText;
+					h3.appendChild(img);
 					h3.appendChild(initAnchor);
 					accordion.appendChild(h3);
 
